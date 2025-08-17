@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+  <title>Weave Headband AR v4.8 — Hairband</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="stage">
+    <header class="topbar">
+      <h1>Weave Headband AR <small>v4.8</small></h1>
+      <span class="hint">直式介面・無重影・髮箍造型</span>
+    </header>
+
+    <section class="video-wrap">
+      <video id="video" autoplay playsinline muted></video>
+      <canvas id="overlay" class="overlay"></canvas>
+      <div class="tapmask" id="tapmask">
+        <button class="btn-primary" id="btnStart">啟動相機</button>
+      </div>
+      <div class="err" id="err"></div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-panel="stylePanel">樣式</button>
+      <button class="tab" data-panel="textPanel">文字</button>
+    </nav>
+
+    <section id="stylePanel" class="panel show">
+      <div class="group">
+        <div class="subhead">顏色（10 色）</div>
+        <div id="swatches" class="swatches"></div>
+      </div>
+
+      <div class="group">
+        <div class="subhead">樣式（8 種）</div>
+        <div id="styleGrid" class="style-grid"></div>
+      </div>
+
+      <div class="group grid-2">
+        <div class="field">
+          <label>高光</label>
+          <input id="shine" type="range" min="0" max="1" step="0.01" value="0.65" />
+        </div>
+        <div class="field">
+          <label>陰影</label>
+          <input id="shadow" type="range" min="0" max="1" step="0.01" value="0.5" />
+        </div>
+      </div>
+
+      <div class="group grid-2">
+        <div class="field">
+          <label>張嘴泡泡兔</label>
+          <input id="bubblesToggle" type="checkbox" checked />
+        </div>
+        <div class="field">
+          <label>兔鼻濾鏡</label>
+          <input id="bunnyNose" type="checkbox" checked />
+        </div>
+      </div>
+
+      <div class="shutter-row">
+        <button class="shutter" id="btnShot" aria-label="拍照"></button>
+      </div>
+      <div class="share-sheet" id="shareRow">
+        <button id="btnSave">保存到手機</button>
+        <button id="btnShare">分享</button>
+      </div>
+    </section>
+
+    <section id="textPanel" class="panel">
+      <div class="field">
+        <label>文字</label>
+        <input id="txt" type="text" value="Happy Mid-Autumn Festival" />
+      </div>
+      <div class="field">
+        <label>大小</label>
+        <input id="txtSize" type="range" min="14" max="56" value="30" />
+      </div>
+      <div class="field">
+        <label>粗細</label>
+        <input id="txtWeight" type="range" min="300" max="900" step="100" value="700" />
+      </div>
+      <div class="field">
+        <label>重複</label>
+        <input id="txtRepeat" type="range" min="1" max="6" value="1" />
+      </div>
+      <div class="field">
+        <label>字距</label>
+        <input id="txtGap" type="range" min="8" max="48" value="22" />
+      </div>
+    </section>
+
+    <footer class="footnote">
+      v4.8：移除預覽頁、固定直式構圖、取消疊加美肌影像避免重影、髮箍型弧線並延伸超過頭部寬度、輸出直式 PNG。
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
